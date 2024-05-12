@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: #121; color: White;">
+    <h1>My shopping list</h1>
+    <div id="outer">
+        <input type="text">
+        <button>Add item</button>
+        <div id="inner">
+            <ul>
+                <li>clothes</li>
+
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    let ul = document.querySelector("ul");
+    let li=document.querySelector('li')
+
+    let btn = document.querySelector("button");
+    let input = document.querySelector('input')
+
+    let DeleteFirstItem = document.createElement('button')
+    DeleteFirstItem.innerText = "Delete"
+    li.appendChild(DeleteFirstItem)
+
+
+    DeleteFirstItem.addEventListener('click',function(){
+        li.remove()
+    })
+
+    function Addelem() {
+        btn.addEventListener('click', function () {
+
+            let data = input.value.trim()
+            if (data !== "") {
+                let new_Element = document.createElement("li");
+                new_Element.textContent = data;
+
+                let delete_Element = document.createElement('button')
+                delete_Element.textContent = "Delete"
+
+                ul.appendChild(new_Element)
+                new_Element.appendChild(delete_Element)
+
+                delete_Element.addEventListener("click", function () {
+                    new_Element.remove()
+                })
+
+                input.value = ""
+
+            }
+        })
+
+    }
+    Addelem()
+
+
+
+
+
+</script>
+
+</html>
